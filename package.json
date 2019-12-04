@@ -4,7 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "seed": "node scripts/seedDB.js",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,6 +23,8 @@
   },
   "homepage": "https://github.com/itshally/react-login#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13",
+    "router": "^1.3.3"
   }
 }
