@@ -17,7 +17,7 @@ const routes = require('./controller/router')
 
  // serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
-     app.use(express.static('view/public'));
+     app.use(express.static('view/build'));
 }
 
 app.use(routes)
@@ -37,9 +37,7 @@ if(process.env.MONGODB_URI){
 }
 
 
-app.get('/', (request, response) => {
-     response.send('hello world');
-}).listen(PORT, () => {
+app.listen(PORT, () => {
     console.log( `Live at http://localhost:${PORT}/`)
 });
 

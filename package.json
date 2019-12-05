@@ -5,10 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "seed": "node scripts/seedDB.js",
-    "build": "cd client && npm run build",
+    "start:dev": "concurrently \"nodemon --ignore 'view/*'\" \"npm run view\"",
+    "view": "cd view && npm run start",
+    "install": "cd view && npm install",
+    "build": "cd view && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
