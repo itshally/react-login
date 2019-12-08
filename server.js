@@ -1,18 +1,19 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const PORT = 3000;
-const routes = require('./controller/router')
+const bodyParser = require('body-parser');
+const routes = require('./controller/router');
+const PORT = process.env.PORT || 3000;
 
 /**
  * A built-in middleware function in Express. It parses incoming requests
  * with URLENCODED payloads and is based on body-parser
- */ app.use(express.urlencoded({ extended: true }));
+ */ app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * A built-in middleware function in Express. It parses incoming requests with
  * JSON payloads and is based on body-parse
- */ app.use(express.json());
+ */ app.use(bodyParser.json());
 
 
  // serve up static assets (usually on heroku)
