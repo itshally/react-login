@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // creates modele for new users
-const User = new Schema({
+const UserSchema = new Schema({
      firstName: { 
           type: String, 
           match: /[A-Za-z]/, 
@@ -27,5 +27,7 @@ const User = new Schema({
      }
 })
 
+const User = mongoose.model('users', UserSchema);
+
 // exports the model
-module.exports = User = mongoose.model('User', User);
+module.exports = User;

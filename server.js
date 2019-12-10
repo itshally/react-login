@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const routes = require('./controller/router');
 const PORT = process.env.PORT || 3000;
+const mongoDB = require('./controller/configuration/keys').mongoURI;
+
+const passport = require('passport');
+const users = require('./controller/api_routes/user');
 
 /**
  * A built-in middleware function in Express. It parses incoming requests
@@ -21,11 +25,15 @@ if (process.env.NODE_ENV === 'production') {
      app.use(express.static('view/build'));
 }
 
-app.use(routes)
+// app.use(routes)
+
+app.use(passport.initialize());
+require('./controller/configuration/passport')(passport);
+app.use('/api/users');
 
 // connects to database
-if(process.env.MONGODB_URI){
-     mongoose.connect(process.env.MONGODB_URI)
+if(mongoDB){
+     mongoose.connect(mongoDB)
              .then( () => console.log(`MongoDB successfully connected`))
              .catch( error => console.log(`Error found while connecting. \n ${error}`));
 }else{
