@@ -27,8 +27,13 @@ if (process.env.NODE_ENV === 'production') {
 
 // app.use(routes)
 
+// passport middleware
 app.use(passport.initialize());
+
+// passport configuration
 require('./controller/configuration/passport')(passport);
+
+// routes for user's api
 app.use('/api/users');
 
 // connects to database
